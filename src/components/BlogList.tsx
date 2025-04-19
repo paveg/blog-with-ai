@@ -8,7 +8,7 @@ type BlogListProps = {
 
 export default function BlogList({ posts }: BlogListProps) {
   return (
-    <div className="grid gap-6">
+    <div className="grid gap-6 py-8">
       {posts.map((post) => (
         <Link
           key={post.slug}

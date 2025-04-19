@@ -14,7 +14,7 @@ export default async function BlogYearPage({ params }: Props) {
   const posts = getAllPosts().filter((post) => post.year === year);
 
   return (
-    <div className="container py-8">
+    <div className="max-w-3xl mx-auto py-8 px-4">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>

@@ -125,6 +125,7 @@ Use the following tools only when necessary:
 - Each function should have a single responsibility
 - Implement proper error handling
 - Add comments only where necessary, especially to explain background; English is recommended for comments
+- Follow `docs/style-guide.md`.
 
 ### Testing
 

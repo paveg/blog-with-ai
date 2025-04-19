@@ -8,7 +8,7 @@ export const Breadcrumb = React.forwardRef<
   <nav
     ref={ref}
     aria-label="breadcrumb"
-    className={cn("w-full", className)}
+    className={cn("w-full mb-4", className)}
     {...props}
   />
 ));
