@@ -44,7 +44,7 @@ function getAllPosts(): PostMeta[] {
 
   walk(contentDir);
   // 日付降順でソート
-  posts.sort((a, b) => b.date.localeCompare(a.date));
+  posts?.sort((a, b) => b.date.localeCompare(a.date));
 }
 
 export default function BlogPage() {
@@ -54,7 +54,7 @@ export default function BlogPage() {
     <div className="container py-8">
       <h1 className="text-3xl font-bold mb-6">ブログ記事一覧</h1>
       <div className="grid gap-6">
-        {posts.map((post) => (
+        {posts?.map((post) => (
           <Card key={post.slug}>
             <Link href={`/blog/${post.year}/${post.monthDay}/${post.slug}`}>
               <CardHeader>
