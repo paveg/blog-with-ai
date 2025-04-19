@@ -8,11 +8,11 @@ type BlogListProps = {
 
 export default function BlogList({ posts }: BlogListProps) {
   return (
-    <div className="grid gap-6">
+    <div className="grid gap-6 py-8">
       {posts.map((post) => (
         <Link
           key={post.slug}
-          href={`/blog/${post.year}/${post.monthDay}/${post.slug}`}
+          href={`/blog/${post.year}/${post.slug}`}
           className="block focus:outline-none focus:ring-2 focus:ring-primary rounded-xl"
           aria-label={post.title}
         >
