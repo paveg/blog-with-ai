@@ -3,8 +3,15 @@ import BlogList from '@/components/BlogList';
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import Link from 'next/link';
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+type Props = {
+  params: {
+    year: string;
+  };
+};
+
+export default async function BlogYearPage({ params }: Props) {
+  const { year } = await params;
+  const posts = getAllPosts().filter((post) => post.year === year);
 
   return (
     <div className="container py-8">
@@ -17,11 +24,17 @@ export default function BlogPage() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <span aria-current="page" className="text-muted-foreground">Blog</span>
+            <BreadcrumbLink asChild>
+              <Link href="/blog">Blog</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <span aria-current="page" className="text-muted-foreground">{year}</span>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <h1 className="text-3xl font-bold mb-6">ブログ記事一覧</h1>
+      <h1 className="text-3xl font-bold mb-6">{year}年の記事一覧</h1>
       <BlogList posts={posts} />
     </div>
   );

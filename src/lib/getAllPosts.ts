@@ -8,39 +8,38 @@ export type PostMeta = {
   description: string;
   slug: string;
   year: string;
-  monthDay: string;
 };
 
 export function getAllPosts(): PostMeta[] {
   const contentDir = path.join(process.cwd(), 'src/content');
   const posts: PostMeta[] = [];
 
-  function walk(dir: string, year = '', monthDay = '') {
-    const files = fs.readdirSync(dir, { withFileTypes: true });
-    for (const file of files) {
-      if (file.isDirectory()) {
-        if (year === '') {
-          walk(path.join(dir, file.name), file.name, monthDay);
-        } else if (monthDay === '') {
-          walk(path.join(dir, file.name), year, file.name);
-        }
-      } else if (file.name.endsWith('.mdx')) {
-        const fullPath = path.join(dir, file.name);
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
-        const { data } = matter(fileContents);
-        posts.push({
-          title: data.title,
-          date: data.date,
-          description: data.description,
-          slug: data.slug,
-          year,
-          monthDay,
-        });
-      }
+  // 年ディレクトリを走査
+  const years = fs.readdirSync(contentDir, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name);
+
+  for (const year of years) {
+    const yearDir = path.join(contentDir, year);
+    const files = fs.readdirSync(yearDir, { withFileTypes: true })
+      .filter(dirent => dirent.isFile() && dirent.name.endsWith('.mdx'))
+      .map(dirent => dirent.name);
+
+    for (const fileName of files) {
+      const fullPath = path.join(yearDir, fileName);
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const { data } = matter(fileContents);
+      const slug = fileName.replace(/\.mdx$/, '');
+      posts.push({
+        title: data.title,
+        date: data.date,
+        description: data.description,
+        slug,
+        year,
+      });
     }
   }
 
-  walk(contentDir);
   // 日付降順でソート
   posts.sort((a, b) => b.date.localeCompare(a.date));
   return posts;

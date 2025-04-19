@@ -11,39 +11,27 @@ import Link from 'next/link';
 type Props = {
   params: {
     year: string;
-    monthDay: string;
     slug: string;
   };
 };
 
-function getPostFilePath(year: string, monthDay: string, slug: string): string | null {
-  const dir = path.join(process.cwd(), 'src/content', year, monthDay);
-  if (!fs.existsSync(dir)) {
-    return null;
-  }
-  const files = fs.readdirSync(dir);
-  for (const file of files) {
-    if (file.endsWith('.mdx')) {
-      const filePath = path.join(dir, file);
-      const fileContents = fs.readFileSync(filePath, 'utf8');
-      const { data } = matter(fileContents);
-      if (data.slug === slug) {
-        return filePath;
-      }
-    }
+function getPostFilePath(year: string, slug: string): string | null {
+  const filePath = path.join(process.cwd(), 'src/content', year, `${slug}.mdx`);
+  if (fs.existsSync(filePath)) {
+    return filePath;
   }
   return null;
 }
 
 export default async function PostPage(props: Props) {
-  const { year, monthDay, slug } = await props.params;
-  const filePath = getPostFilePath(year, monthDay, slug);
+  const { year, slug } = await props.params;
+  const filePath = getPostFilePath(year, slug);
 
   if (!filePath) {
     notFound();
   }
 
-  const fileContents = fs.readFileSync(filePath!, 'utf8');
+  const fileContents = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(fileContents);
 
   return (
@@ -65,12 +53,6 @@ export default async function PostPage(props: Props) {
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
               <Link href={`/blog/${year}`}>{year}</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href={`/blog/${year}/${monthDay}`}>{monthDay}</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
