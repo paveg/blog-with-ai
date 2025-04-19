@@ -8,11 +8,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import Link from 'next/link';
 
-type Props = {
-  params: {
-    year: string;
-    slug: string;
-  };
+type Params = {
+  year: string;
+  slug: string;
 };
 
 function getPostFilePath(year: string, slug: string): string | null {
@@ -23,8 +21,8 @@ function getPostFilePath(year: string, slug: string): string | null {
   return null;
 }
 
-export default async function PostPage(props: Props) {
-  const { year, slug } = await props.params;
+export default async function PostPage({ params }: { params: Promise<Params> }) {
+  const { year, slug } = await params;
   const filePath = getPostFilePath(year, slug);
 
   if (!filePath) {

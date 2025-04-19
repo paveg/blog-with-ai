@@ -3,13 +3,11 @@ import BlogList from '@/components/BlogList';
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import Link from 'next/link';
 
-type Props = {
-  params: {
-    year: string;
-  };
+type Params = {
+  year: string;
 };
 
-export default async function BlogYearPage({ params }: Props) {
+export default async function BlogYearPage({ params }: { params: Promise<Params> }) {
   const { year } = await params;
   const posts = getAllPosts().filter((post) => post.year === year);
 
