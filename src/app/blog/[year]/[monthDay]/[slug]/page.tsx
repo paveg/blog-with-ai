@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import rehypePrism from 'rehype-prism-plus';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 type Props = {
@@ -32,8 +33,8 @@ function getPostFilePath(year: string, monthDay: string, slug: string): string |
   return null;
 }
 
-export default function PostPage({ params }: Props) {
-  const { year, monthDay, slug } = params;
+export default async function PostPage(props: Props) {
+  const { year, monthDay, slug } = await props.params;
   const filePath = getPostFilePath(year, monthDay, slug);
 
   if (!filePath) {
@@ -52,7 +53,15 @@ export default function PostPage({ params }: Props) {
         </CardHeader>
         <CardContent>
           <article className="prose prose-neutral max-w-none">
-            <MDXRemote source={content} />
+            <MDXRemote
+              source={content}
+              components={{}}
+              options={{
+                mdxOptions: {
+                  rehypePlugins: [rehypePrism],
+                },
+              }}
+            />
           </article>
         </CardContent>
       </Card>
