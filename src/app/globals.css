@@ -319,3 +319,38 @@
 .prose td {
   vertical-align: middle;
 }
+
+/* --- チェック済みリスト（タスクリスト） --- */
+.prose ul > li > input[type='checkbox']:checked + * {
+  text-decoration: line-through;
+  color: var(--color-muted-foreground, #6b7280);
+  opacity: 0.7;
+}
+
+/* --- 箇条書きリスト・番号付きリスト --- */
+.prose ul,
+.prose ol {
+  padding-left: 1.5em;
+}
+.prose ul > li,
+.prose ol > li {
+  margin-bottom: 1.2em;
+}
+.prose ul > li::marker {
+  color: var(--color-primary, #2563eb);
+  font-size: 1.1em;
+}
+.prose ol > li::marker {
+  color: var(--color-accent, #2563eb);
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/* --- 取り消し線 --- */
+.prose del,
+.prose s {
+  color: var(--color-muted-foreground, #6b7280);
+  text-decoration: line-through;
+  opacity: 0.7;
+  font-style: italic;
+}
