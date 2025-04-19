@@ -44,8 +44,7 @@ function getAllPosts(): PostMeta[] {
 
   walk(contentDir);
   // 日付降順でソート
-  posts.sort((a, b) => (a.date < b.date ? 1 : -1));
-  return posts;
+  posts.sort((a, b) => b.date.localeCompare(a.date));
 }
 
 export default function BlogPage() {
