@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { notFound } from 'next/navigation';
-import { compileMDX } from 'next-mdx-remote/rsc';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrism from 'rehype-prism-plus';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
@@ -42,8 +42,9 @@ function getPostFilePath(year: string, slug: string): string | null {
   return null;
 }
 
-export default async function PostPage({ params }: { params: Params }) {
-  const { year, slug } = params;
+
+export default async function PostPage({ params }: { params: Promise<Params> }) {
+  const { year, slug } = await params;
   const filePath = getPostFilePath(year, slug);
 
   if (!filePath) {
@@ -52,43 +53,6 @@ export default async function PostPage({ params }: { params: Params }) {
 
   const fileContents = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(fileContents);
-
-  const compiled = await compileMDX({
-    source: content,
-    options: {
-      mdxOptions: {
-        rehypePlugins: [rehypePrism],
-      },
-    },
-    components: {
-      h1: H1,
-      h2: H2,
-      h3: H3,
-      h4: H4,
-      h5: H5,
-      h6: H6,
-      p: Paragraph,
-      a: Anchor,
-      ul: Ul,
-      ol: Ol,
-      li: Li,
-      blockquote: Blockquote,
-      code: Code,
-      img: Image,
-      table: Table,
-      strong: Strong,
-      em: Em,
-      del: Del,
-      hr: Hr,
-      TaskListItem: TaskListItem,
-      details: Details,
-      summary: Summary,
-      Card,
-      CardHeader,
-      CardTitle,
-      CardContent,
-    },
-  });
 
   return (
     <div className="container py-8">
@@ -128,7 +92,42 @@ export default async function PostPage({ params }: { params: Params }) {
         </CardHeader>
         <CardContent>
           <article className="prose prose-neutral max-w-none">
-            {compiled.content}
+          <MDXRemote
+              source={content}
+              components={{
+                h1: H1,
+                h2: H2,
+                h3: H3,
+                h4: H4,
+                h5: H5,
+                h6: H6,
+                p: Paragraph,
+                a: Anchor,
+                ul: Ul,
+                ol: Ol,
+                li: Li,
+                blockquote: Blockquote,
+                code: Code,
+                img: Image,
+                table: Table,
+                strong: Strong,
+                em: Em,
+                del: Del,
+                hr: Hr,
+                TaskListItem: TaskListItem,
+                details: Details,
+                summary: Summary,
+                Card,
+                CardHeader,
+                CardTitle,
+                CardContent,
+              }}
+              options={{
+                mdxOptions: {
+                  rehypePlugins: [rehypePrism],
+                },
+              }}
+            />
           </article>
         </CardContent>
       </Card>
