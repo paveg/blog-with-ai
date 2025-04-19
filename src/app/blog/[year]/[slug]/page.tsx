@@ -13,6 +13,8 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import Link from 'next/link';
+import Details from '@/components/mdx/Details';
+import Summary from '@/components/mdx/Summary';
 
 type Params = {
   year: string;
@@ -83,6 +85,8 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
                 CardHeader,
                 CardTitle,
                 CardContent,
+                details: Details,
+                summary: Summary,
                 // 必要に応じて他のコンポーネントも追加
               }}
               options={{

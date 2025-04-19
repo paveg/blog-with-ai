@@ -266,3 +266,56 @@
   margin-top: 1em;
   margin-bottom: 1em;
 }
+
+/* --- 見出し（h1〜h6）統一スタイル --- */
+.prose h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+.prose h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+.prose h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+.prose h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+.prose h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+.prose h6 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  color: var(--color-muted-foreground, #6b7280);
+}
+
+/* --- テーブル追加調整 --- */
+.prose tr:hover {
+  background: oklch(0.97 0 0 / 0.5);
+  transition: background 0.2s;
+}
+.prose th:last-child,
+.prose td:last-child {
+  border-right: none;
+}
+.prose th,
+.prose td {
+  vertical-align: middle;
+}
