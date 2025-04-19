@@ -15,6 +15,9 @@ type Props = {
 
 function getPostFilePath(year: string, monthDay: string, slug: string): string | null {
   const dir = path.join(process.cwd(), "src/content", year, monthDay);
+  if (!fs.existsSync(dir)) {
+    return null;
+  }
   const files = fs.readdirSync(dir);
   for (const file of files) {
     if (file.endsWith(".mdx")) {
