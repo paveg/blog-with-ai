@@ -5,7 +5,13 @@ import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrism from 'rehype-prism-plus';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
 import Link from 'next/link';
 
 type Params = {
@@ -55,7 +61,9 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <span aria-current="page" className="text-muted-foreground">{data.title}</span>
+            <span aria-current="page" className="text-muted-foreground">
+              {data.title}
+            </span>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
@@ -70,7 +78,13 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
           <article className="prose prose-neutral max-w-none">
             <MDXRemote
               source={content}
-              components={{}}
+              components={{
+                Card,
+                CardHeader,
+                CardTitle,
+                CardContent,
+                // 必要に応じて他のコンポーネントも追加
+              }}
               options={{
                 mdxOptions: {
                   rehypePlugins: [rehypePrism],

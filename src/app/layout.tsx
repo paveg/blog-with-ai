@@ -33,7 +33,10 @@ export default function RootLayout({
         {/* Header */}
         <header className="w-full border-b bg-background">
           <div className="max-w-2xl mx-auto px-4 py-4">
-            <Link href="/" className="text-xl font-bold hover:underline focus-visible:underline transition-colors">
+            <Link
+              href="/"
+              className="text-xl font-bold hover:underline focus-visible:underline transition-colors"
+            >
               Blog
             </Link>
           </div>

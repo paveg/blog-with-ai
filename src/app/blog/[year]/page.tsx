@@ -1,6 +1,12 @@
 import { getAllPosts } from '@/lib/getAllPosts';
 import BlogList from '@/components/BlogList';
-import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
 import Link from 'next/link';
 
 type Params = {
@@ -28,7 +34,9 @@ export default async function BlogYearPage({ params }: { params: Promise<Params>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <span aria-current="page" className="text-muted-foreground">{year}</span>
+            <span aria-current="page" className="text-muted-foreground">
+              {year}
+            </span>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>

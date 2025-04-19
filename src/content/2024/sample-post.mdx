@@ -1,26 +1,124 @@
 ---
-title: 'サンプル記事'
+title: 'MDX全要素サンプル'
 date: '2024-04-19'
-description: 'これはサンプルのMDX記事です。'
+description: 'MDXで使えるすべての記述方法と、推奨スタイルの見本集です。'
 slug: 'sample-post'
 ---
 
-# サンプル記事
+import { Card, CardHeader, CardTitle, CardContent } from '../../components/ui/card';
 
-これはMDX形式で記述されたサンプル記事です。
+# H1 見出し
 
-- SSG
-- Next.js
-- shadcn/ui
+最上位の見出しです。
 
-ブログサイトの構築例としてご利用ください。
+## H2 見出し
 
-```tsx
-import '@shadcn/ui/button';
+2番目の見出しです。
 
-export const SampleButton = () => {
-  return <Button>Sample</Button>;
-};
+### H3 見出し
+
+3番目の見出しです。
+
+#### H4 見出し
+
+4番目の見出しです。
+
+##### H5 見出し
+
+5番目の見出しです。
+
+###### H6 見出し
+
+6番目の見出しです。
+
+---
+
+これは**段落**の例です。  
+_イタリック_、**ボールド**、~~取り消し線~~、`インラインコード` も使えます。
+
+---
+
+- 箇条書きリスト
+  - ネストリスト
+    - さらにネスト
+- 別の項目
+
+1. 番号付きリスト
+2. 2番目の項目
+   1. ネストした番号付きリスト
+
+- [x] チェック済みタスク
+- [ ] 未チェックタスク
+
+---
+
+> これは引用（blockquote）の例です。  
+> Tailwindの`prose`クラスで左ボーダーと背景色が付きます。
+
+---
+
+[リンクの例](https://example.com)
+
+---
+
+![画像の例](https://placehold.jp/300x100.png)
+
+---
+
+| テーブル見出し1 | テーブル見出し2 | テーブル見出し3 |
+| --------------- | --------------- | --------------- |
+| セル1           | セル2           | セル3           |
+| セル4           | セル5           | セル6           |
+
+---
+
+水平線の例（上記の---）
+
+---
+
+脚注の例[^1]
+
+[^1]: これは脚注の内容です。
+
+---
+
+<details>
+  <summary>詳細を表示（HTMLタグ例）</summary>
+  ここはdetailsタグの中身です。
+</details>
+
+---
+
+```js
+// コードブロック（JavaScript）
+console.log('Hello, world!');
 ```
 
-[Link](https://example.com)
+```tsx
+// コードブロック（TypeScript/JSX）
+export const SampleCard = () => (
+  <Card>
+    <CardHeader>
+      <CardTitle>サンプルCard</CardTitle>
+    </CardHeader>
+    <CardContent>これはCardコンポーネントのサンプルです。</CardContent>
+  </Card>
+);
+```
+
+---
+
+`インラインコード`の例
+
+---
+
+<Card className="my-6">
+  <CardHeader>
+    <CardTitle>Cardコンポーネント例</CardTitle>
+  </CardHeader>
+  <CardContent>これはCardの中身です。</CardContent>
+</Card>
+
+---
+
+{/* コメント（JSX/MDX）も記述可能です */}

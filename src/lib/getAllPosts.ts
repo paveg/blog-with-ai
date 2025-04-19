@@ -15,15 +15,17 @@ export function getAllPosts(): PostMeta[] {
   const posts: PostMeta[] = [];
 
   // 年ディレクトリを走査
-  const years = fs.readdirSync(contentDir, { withFileTypes: true })
-    .filter(dirent => dirent.isDirectory())
-    .map(dirent => dirent.name);
+  const years = fs
+    .readdirSync(contentDir, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
 
   for (const year of years) {
     const yearDir = path.join(contentDir, year);
-    const files = fs.readdirSync(yearDir, { withFileTypes: true })
-      .filter(dirent => dirent.isFile() && dirent.name.endsWith('.mdx'))
-      .map(dirent => dirent.name);
+    const files = fs
+      .readdirSync(yearDir, { withFileTypes: true })
+      .filter((dirent) => dirent.isFile() && dirent.name.endsWith('.mdx'))
+      .map((dirent) => dirent.name);
 
     for (const fileName of files) {
       const fullPath = path.join(yearDir, fileName);
