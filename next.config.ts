@@ -1,7 +1,17 @@
 import type { NextConfig } from "next";
+import mdx from "@next/mdx";
 
+/** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
-  /* config options here */
+  // 他の設定があればここに追加
+  pageExtensions: ["ts", "tsx", "js", "jsx", "mdx"],
 };
 
-export default nextConfig;
+const withMDX = mdx({
+  extension: /\.mdx?$/,
+  options: {
+    // remarkPlugins, rehypePluginsなど必要に応じて追加
+  },
+});
+
+export default withMDX(nextConfig);
