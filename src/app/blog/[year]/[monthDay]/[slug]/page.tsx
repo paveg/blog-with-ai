@@ -48,7 +48,9 @@ export default async function PostPage(props: Props) {
     <div className="container py-8">
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl">{data.title}</CardTitle>
+          <CardTitle as="h1" className="text-2xl">
+            {data.title}
+          </CardTitle>
           <p className="text-xs text-muted-foreground mt-2">{data.date}</p>
         </CardHeader>
         <CardContent>
