@@ -33,8 +33,8 @@ function getPostFilePath(year: string, monthDay: string, slug: string): string |
   return null;
 }
 
-export default async function PostPage({ params }: Props) {
-  const { year, monthDay, slug } = params;
+export default async function PostPage(props: Props) {
+  const { year, monthDay, slug } = await props.params;
   const filePath = getPostFilePath(year, monthDay, slug);
 
   if (!filePath) {
