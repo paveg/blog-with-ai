@@ -1,6 +1,12 @@
 import { getAllPosts } from '@/lib/getAllPosts';
 import BlogList from '@/components/BlogList';
-import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
 import Link from 'next/link';
 
 export default function BlogPage() {
@@ -17,7 +23,9 @@ export default function BlogPage() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <span aria-current="page" className="text-muted-foreground">Blog</span>
+            <span aria-current="page" className="text-muted-foreground">
+              Blog
+            </span>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
