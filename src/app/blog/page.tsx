@@ -1,8 +1,8 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import Link from 'next/link';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 type PostMeta = {
   title: string;
@@ -14,21 +14,21 @@ type PostMeta = {
 };
 
 function getAllPosts(): PostMeta[] {
-  const contentDir = path.join(process.cwd(), "src/content");
+  const contentDir = path.join(process.cwd(), 'src/content');
   const posts: PostMeta[] = [];
 
-  function walk(dir: string, year = "", monthDay = "") {
+  function walk(dir: string, year = '', monthDay = '') {
     const files = fs.readdirSync(dir, { withFileTypes: true });
     for (const file of files) {
       if (file.isDirectory()) {
-        if (year === "") {
+        if (year === '') {
           walk(path.join(dir, file.name), file.name, monthDay);
-        } else if (monthDay === "") {
+        } else if (monthDay === '') {
           walk(path.join(dir, file.name), year, file.name);
         }
-      } else if (file.name.endsWith(".mdx")) {
+      } else if (file.name.endsWith('.mdx')) {
         const fullPath = path.join(dir, file.name);
-        const fileContents = fs.readFileSync(fullPath, "utf8");
+        const fileContents = fs.readFileSync(fullPath, 'utf8');
         const { data } = matter(fileContents);
         posts.push({
           title: data.title,
