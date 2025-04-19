@@ -10,8 +10,13 @@ export default function BlogList({ posts }: BlogListProps) {
   return (
     <div className="grid gap-6">
       {posts.map((post) => (
-        <Card key={post.slug}>
-          <Link href={`/blog/${post.year}/${post.monthDay}/${post.slug}`}>
+        <Link
+          key={post.slug}
+          href={`/blog/${post.year}/${post.monthDay}/${post.slug}`}
+          className="block focus:outline-none focus:ring-2 focus:ring-primary rounded-xl"
+          aria-label={post.title}
+        >
+          <Card>
             <CardHeader>
               <CardTitle>{post.title}</CardTitle>
             </CardHeader>
@@ -19,8 +24,8 @@ export default function BlogList({ posts }: BlogListProps) {
               <p className="text-muted-foreground">{post.description}</p>
               <p className="text-xs mt-2">{post.date}</p>
             </CardContent>
-          </Link>
-        </Card>
+          </Card>
+        </Link>
       ))}
     </div>
   );

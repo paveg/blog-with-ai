@@ -156,8 +156,6 @@ Write concise and clear commit messages to make change history easy to follow.
 Write commit messages as follows:  
 `git add . && git commit -m "feat: Added user registration feature"`
 
-Do not execute commits automatically; always get confirmation from the requester before committing.
-
 ## Best Practices
 
 - Create generic and reusable components
