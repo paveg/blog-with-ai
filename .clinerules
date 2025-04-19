@@ -148,7 +148,8 @@ Write concise and clear commit messages to make change history easy to follow.
 
 - Each commit should contain only one logical change
 - If there are multiple changes, split them into multiple commits
-- Commit messages can be written in Japanese
+- Commit messages can be written in English
+- Please execute `pnpm format` before commit
 
 ### How to Commit
 
