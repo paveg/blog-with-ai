@@ -7,7 +7,7 @@ Articles are managed as MDX files under `src/content/`, supporting flexible layo
 
 ## 1. Project Overview
 
-**Blog with AI** is a developer-friendly, extensible blog platform.  
+**Blog with AI** is a developer-friendly, extensible blog platform.
 
 - Built with the latest Next.js (App Router) and TypeScript.
 - Uses Tailwind CSS and shadcn/ui for rapid, consistent UI development.
@@ -91,7 +91,7 @@ docs/style-guide.md   # UI style guide
 
 Example: `src/content/2024/sample-post.mdx`
 
-```mdx
+````mdx
 ---
 title: 'MDX Sample Post'
 date: '2024-04-19'
@@ -118,17 +118,18 @@ _Italic_, **bold**, ~~strikethrough~~, and `inline code` are supported.
 
 [Link example](https://example.com)
 
-![Accessible image example](https://placehold.jp/300x100.png "Sample image")
+![Accessible image example](https://placehold.jp/300x100.png 'Sample image')
 
 <details>
-<summary>Show details (MDX custom element example)</summary>
-This is the content inside the details tag.
+  <summary>Show details (MDX custom element example)</summary>
+  This is the content inside the details tag.
 </details>
 
 ```js
 // Code block (JavaScript)
 console.log('Hello, world!');
 ```
+````
 
 ```tsx
 <Card className="my-6">
