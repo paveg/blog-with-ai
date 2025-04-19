@@ -42,7 +42,6 @@ function getPostFilePath(year: string, slug: string): string | null {
   return null;
 }
 
-
 export default async function PostPage({ params }: { params: Promise<Params> }) {
   const { year, slug } = await params;
   const filePath = getPostFilePath(year, slug);
@@ -92,7 +91,7 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
         </CardHeader>
         <CardContent>
           <article className="prose prose-neutral max-w-none">
-          <MDXRemote
+            <MDXRemote
               source={content}
               components={{
                 h1: H1,

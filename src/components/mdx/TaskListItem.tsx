@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 type TaskListItemProps = React.HTMLAttributes<HTMLLIElement> & {
   checked?: boolean;
@@ -14,19 +14,16 @@ export default function TaskListItem({
   let isChecked = checked;
   let label = children;
 
-  if (typeof children === "string") {
+  if (typeof children === 'string') {
     const match = children.match(/^\s*\[( |x|X)\]\s*(.*)$/);
     if (match) {
-      isChecked = match[1].toLowerCase() === "x";
+      isChecked = match[1].toLowerCase() === 'x';
       label = match[2];
     }
   }
 
   return (
-    <li
-      className={`flex items-start gap-2 list-none ${className ? className : ""}`}
-      {...props}
-    >
+    <li className={`flex items-start gap-2 list-none ${className ? className : ''}`} {...props}>
       <label className="flex items-start gap-2 w-full">
         <input
           type="checkbox"
@@ -37,9 +34,7 @@ export default function TaskListItem({
           aria-label="タスク完了"
         />
         <span className="sr-only">タスク完了</span>
-        <span className={isChecked ? "line-through text-muted-foreground" : ""}>
-          {label}
-        </span>
+        <span className={isChecked ? 'line-through text-muted-foreground' : ''}>{label}</span>
       </label>
     </li>
   );
