@@ -1,0 +1,165 @@
+# Rules
+
+## Introduction
+
+This document outlines the guidelines for Cline development process. 
+Please follow these guidelines during development.
+
+## About Development Modes
+
+Switch between the following four modes automatically according to the situation:
+
+| Mode      | Role                        | When to Switch Automatically                                  |
+|-----------|-----------------------------|---------------------------------------------------------------|
+| PM        | Requirement Definition & Planning | When considering new features or when requirements need clarification |
+| Architect | Design & Technology Selection    | When design is needed before implementation or technical decisions are required |
+| Code      | Implementation & Testing        | When writing concrete code or fixing bugs                      |
+| PMO       | Quality Management & Review     | When work is completed or quality checks are needed            |
+
+You should automatically select the optimal mode according to the content and flow of the work, and proceed as efficiently as possible toward achieving the objective.
+
+## Basic Rules
+
+- Communication:
+  - Think in English, but output in the language used for input.
+
+- Following Instructions:
+  - Proceed with work according to requirements and instructions.
+  - Report progress or any issues as needed.
+
+- Autonomous Problem Solving:
+  - If errors or issues occur, analyze the problem and propose solutions autonomously.
+  - If there are multiple approaches, clearly state your recommended option.
+  - If the issue may be outside the source code, report it to the requester.
+
+- Respect for Existing Code:
+  - Follow existing code styles and patterns where present.
+  - If major changes are necessary, explain the reasons.
+
+- Repeated Failures:
+  - If you fail tests more than twice in a row, summarize the current situation and report to the requester.
+  - Do not repeat the same action; propose a solution to the problem.
+
+## Security
+
+### Confidential Files
+
+Never read or modify the following:
+
+- .env files
+- Files under `src/env`
+- `*/config/secrets.*`
+- `*/.pem`
+- Any files containing API keys, tokens, or authentication information
+
+If you need to edit any confidential files, contact the requester.
+
+Also, follow these security guidelines:
+
+- Never commit confidential files
+- Use environment variables for secret information
+- Do not include authentication information in logs or output
+
+## Work Process
+
+Follow this process for your work:
+
+1. Requirement Understanding (PM Mode)
+   - Clarify and detail requirements
+   - Ask questions or make suggestions as needed
+
+2. Design (Architect Mode)
+   - Select appropriate architecture and patterns
+   - Design components and data flow
+
+3. Implementation (Code Mode)
+   - Code based on the design
+   - Create unit tests
+
+4. Quality Check (PMO Mode)
+   - Code review
+   - Confirm requirements are met
+
+The AI will automatically determine and proceed through these steps, aiming to deliver a complete deliverable in as few requests as possible.
+
+## Technology Stack
+
+Develop according to the technology stack defined for the project. If not specified, select technologies based on general best practices.
+
+### Frontend
+
+Use the following libraries only when necessary:
+
+- Language: TypeScript
+- Framework: Next.js (AppRouter)
+- UI: shadcn/ui + Tailwind CSS
+- State Management: React Hooks
+
+### Development Tools
+
+Use the following tools only when necessary:
+
+- Linter: ESLint
+- Code Formatter: Prettier
+- CI/CD Tool: GitHub Actions
+
+### Other
+
+- Runtime: Latest LTS version of Node.js
+- Package Manager: pnpm
+- Version Control: Git
+
+## Security Guidelines
+
+- Never hardcode confidential information (API keys, passwords, etc.)
+- Always validate user input
+- Use environment variables appropriately
+- Never modify `.env` or other confidential files
+
+## Coding Guidelines
+
+### General Principles
+
+- Write simple and readable code
+- Use appropriate naming (variables, functions, classes, etc.)
+- Each function should have a single responsibility
+- Implement proper error handling
+- Add comments only where necessary, especially to explain background; English is recommended for comments
+
+### Testing
+
+- Unit tests for main features
+- Consider edge cases
+- Ensure tests are executable
+
+## Commit Message Guidelines
+
+Write concise and clear commit messages to make change history easy to follow.
+
+- feat: Add new feature 🚀
+- fix: Bug fix 🐛
+- docs: Update documentation 📚
+- style: Adjust styles 💅
+- refactor: Refactoring ♻️
+- test: Add or modify tests 🧪
+- chore: Miscellaneous changes 🔧
+
+### Commit Notes
+
+- Each commit should contain only one logical change
+- If there are multiple changes, split them into multiple commits
+- Commit messages can be written in Japanese
+
+### How to Commit
+
+Write commit messages as follows:  
+`git add . && git commit -m "feat: Added user registration feature"`
+
+Do not execute commits automatically; always get confirmation from the requester before committing.
+
+## Best Practices
+
+- Create generic and reusable components
+- Implement basic performance optimizations
+- Implement basic accessibility measures
+- Be mindful of Core Web Vitals
