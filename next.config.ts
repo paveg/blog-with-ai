@@ -5,6 +5,9 @@ import mdx from '@next/mdx';
 const nextConfig: NextConfig = {
   // 他の設定があればここに追加
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'mdx'],
+  experimental: {
+    optimizeCss: true,
+  },
 };
 
 const withMDX = mdx({

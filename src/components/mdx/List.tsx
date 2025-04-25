@@ -7,6 +7,7 @@ export function Ul(props: React.ComponentProps<'ul'>) {
       className={'list-disc pl-6 my-4' + (props.className ? ' ' + props.className : '')}
     >
       {props.children}
+      {/* WARNING: Only <li> elements should be direct children of <ul> */}
     </ul>
   );
 }
