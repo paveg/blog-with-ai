@@ -13,8 +13,6 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import Link from 'next/link';
-import Details from '@/components/mdx/Details';
-import Summary from '@/components/mdx/Summary';
 import { H1, H2, H3, H4, H5, H6 } from '@/components/mdx/Heading';
 import { Paragraph } from '@/components/mdx/Paragraph';
 import { Anchor } from '@/components/mdx/Anchor';
@@ -114,8 +112,6 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
                 del: Del,
                 hr: Hr,
                 TaskListItem: TaskListItem,
-                details: Details,
-                summary: Summary,
                 Card,
                 CardHeader,
                 CardTitle,
