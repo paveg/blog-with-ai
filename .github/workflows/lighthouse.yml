@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 'lts/*' # 最新のLTSバージョンを使用
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v3
         with:
           version: 9 # package.jsonで指定されているバージョンに合わせる
       - name: Install dependencies
