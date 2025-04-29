@@ -14,7 +14,6 @@ export default function BlogList({ posts }: BlogListProps) {
           key={post.slug}
           href={`/blog/${post.year}/${post.slug}`}
           className="block focus:outline-none focus:ring-2 focus:ring-primary rounded-xl"
-          aria-label={post.title}
         >
           <Card>
             <CardHeader>
