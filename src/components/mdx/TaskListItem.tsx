@@ -31,9 +31,9 @@ export default function TaskListItem({
           readOnly
           className="mt-1 accent-primary"
           tabIndex={-1}
-          aria-label="タスク完了"
+          aria-label={typeof label === 'string' ? label : String(label)}
         />
-        <span className="sr-only">タスク完了</span>
+        <span className="sr-only">{label}</span>
         <span className={isChecked ? 'line-through text-muted-foreground' : ''}>{label}</span>
       </label>
     </li>

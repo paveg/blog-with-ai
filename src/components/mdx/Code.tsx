@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../../public/prism-tomorrow.css';
 
 export function Code(props: React.ComponentProps<'code'>) {
   // pre > code かどうかは親で判定されるため、ここではインライン用

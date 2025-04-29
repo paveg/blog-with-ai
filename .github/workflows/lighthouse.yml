@@ -1,0 +1,35 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*' # 最新のLTSバージョンを使用
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9 # package.jsonで指定されているバージョンに合わせる
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build project
+        run: pnpm build
+      - name: Run Lighthouse CI
+        run: pnpm lhci autorun
+        env:
+          # LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }} # 必要に応じてGitHub App Tokenを設定
+          # LHCI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub Actionsのデフォルトトークンを使用する場合
+          # LHCI_SERVER_BASE_URL: ${{ secrets.LHCI_SERVER_BASE_URL }} # 独自のLHCIサーバーを使用する場合
+          # LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }} # 独自のLHCIサーバーのトークン
+          # 環境変数が必要な場合は上記コメントアウトを解除し、リポジトリのSecretsに設定してください
+          # 今回は temporary-public-storage を使用するため、トークンは不要です
+          NODE_ENV: production # CI環境であることを明示

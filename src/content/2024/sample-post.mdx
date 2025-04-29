@@ -20,8 +20,10 @@ _イタリック_、**ボールド**、~~取り消し線~~、`インラインコ
 2. 2番目の項目
 3. aaa
 
-- [x] チェック済みタスク
-- [ ] 未チェックタスク
+import TaskListItem from '@/components/mdx/TaskListItem';
+
+<TaskListItem checked={true}>チェック済みタスク</TaskListItem>
+<TaskListItem checked={false}>未チェックタスク</TaskListItem>
 
 ---
 

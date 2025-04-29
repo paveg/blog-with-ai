@@ -121,9 +121,6 @@
   }
 }
 
-/* PrismJS Tomorrow Theme */
-@import '../../public/prism-tomorrow.css';
-
 /* --- Blog Readability & Accessibility Enhancements --- */
 .prose a {
   color: var(--color-primary);

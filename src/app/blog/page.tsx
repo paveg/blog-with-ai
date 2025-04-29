@@ -20,8 +20,8 @@ export default function BlogPage() {
             <BreadcrumbLink asChild>
               <Link href="/">Home</Link>
             </BreadcrumbLink>
+            <BreadcrumbSeparator />
           </BreadcrumbItem>
-          <BreadcrumbSeparator />
           <BreadcrumbItem>
             <span aria-current="page" className="text-muted-foreground">
               Blog
